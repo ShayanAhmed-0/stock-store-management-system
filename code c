@@ -1,0 +1,210 @@
+#include<stdio.h>
+#include<string.h>
+struct shayan{
+	int price,choice,re;
+	char ch;
+}aa,bb,cc,dd,ee,ff;
+struct items{
+	char item1[7][9]={"wheat","Rice","Spices","Milk","cat food","soap"};
+	int cost1[6] = {150,120,80,150,70,65};
+	char item2[7][8]={"Pepsi","Coke","Sprite","String","Dew","Fanta","RedBull"};
+	int cost2[7] = {60,60,60,70,60,60,300};
+	char item3[13][15]={"camera","charger","LED","RAMS","Mouses","keyboard","Headphones","microphone","routers","HHD","SSD","graphicsCards","MotherBoard"};
+    int cost3[13] = {50000,200,40,5000,4000,4000,10000,1000,2500,1000,5000,100000,2000};
+    char item4[7][8]={"sofitel","norvasc","CaC1000","Disprin","Panadol","Aspirin","Sofvasc"};
+    int cost4[7] = {140,500,600,140,140,140,120};
+    char item5[8][9]={"Pencil","sharpner","Eraser","Bollpen","Ponters","Register","Bags","Ink"};
+    int cost5[8] = {5,10,10,15,20,400,1500,200};
+    char item6[7][12]={"Apple","Banana","Mango","Pomegranate","Guava","Orange","Peache"};
+    int cost6[7] = {150,100,300,500,200,150,200};  
+}it;
+void recipt(int a,int b,int c,int d,int e,int f,int *p){
+	aa.re-=1,bb.re-=1,cc.re-=1,dd.re-=1,ee.re-=1,ff.re-=1;
+	printf("-------------------------------------------------\n");
+	printf("Section\t\tYou Bought \tPrice\t  Stocks\n");
+	printf("-------------------------------------------------\n");
+	if(aa.re>=0)
+	printf("grossery\t%s\t\t%d\t  %d\n",it.item1[aa.re],it.cost1[aa.re],a);
+	if(bb.re>=0)
+	printf("beverages\t%s\t\t%d\t  %d\n",it.item2[bb.re],it.cost2[bb.re],b);
+	if(cc.re>=0)
+	printf("electronice\t%s\t\t%d\t  %d\n",it.item3[cc.re],it.cost3[cc.re],c);
+	if(dd.re>=0)
+	printf("medicine\t%s\t\t%d\t  %d\n",it.item4[dd.re],it.cost4[dd.re],d);
+	if(ee.re>=0)
+	printf("stationary\t%s\t\t%d\t  %d\n",it.item5[ee.re],it.cost5[ee.re],e);
+	if(ff.re>=0)
+	printf("fruits\t\t%s\t\t%d\t  %d\n",it.item6[ff.re],it.cost6[ff.re],f);
+	printf("\n-------------------------------------------------\n");
+	printf("total Price: %d",*p);
+	printf("\n-------------------------------------------------\n");
+}
+int buy(int stock[], int cost[], int *p){
+    int a, r, fc;
+    printf("available Stock is %d\n",stock[aa.choice]);
+    printf("Price for Each is %d\n",cost[aa.choice]);
+    printf("Enter Number of Stocks you Want to buy: ");
+    scanf("%d", &a);
+    if(a<=0){
+    	printf("not a Valid Number");
+	}
+    else if(a>stock[aa.choice]){
+    	printf("We dont Have that Much in Stock");
+	}
+	else{
+    r = stock[aa.choice]-a;
+    fc = cost[aa.choice]*a;
+    printf("Remaining Stock is %d\n", r);
+    printf("Cost of %d pack is %dRs\n", a, fc);
+    printf("\n-------------------------------------------------\n");
+    printf("-------------------------------------------------\n");
+    *p += fc;
+    return a;
+	}
+}
+int grossary(int *p){
+    int stock[] = {1000,900,300,500,100,800};
+    printf("\n-------------------------------------------------\n");
+    printf("in Grossary we have\tprice");
+    printf("\n-------------------------------------------------\n");
+    printf("\n1.wheat\t\t\t150 rs/kg\n2.Rice\t\t\t120rs/kg\n3.Spices\t\t80rs/pack\n4.Milk\t\t\t150rs/litre\n5.cat food\t\t70rs/pack\n6.soap\t\t\t65rs/bar");
+    printf("\n\nEnter Your Choice: ");
+    scanf("%d", &aa.choice);
+    printf("\n-------------------------------------------------\n");
+    aa.re = aa.choice;
+    aa.choice -= 1;
+    printf("\nDo you want to buy %s \n[Y/N]: \n", it.item1[aa.choice]);
+    scanf(" %c", &aa.ch);
+    if (aa.ch == 'Y' || aa.ch == 'y'){
+        int a=buy(stock, it.cost1,p);
+        return a;
+    }
+}
+int beverages(int *p){
+    int stock[] = {10000,1000,8000,5000,8000,4000,3000};
+    printf("\n-------------------------------------------------\n");
+    printf("in beverages we have\tprice");
+    printf("\n-------------------------------------------------\n");   
+    printf("\n1.Pepsi\t\t\t60Rs(500ml)\n2.Coke\t\t\t60Rs(500ml)\n3.Sprite\t\t60Rs(500ml)\n4.String\t\t70Rs(500ml)\n5.Dew\t\t\t60Rs(500ml)\n6.Fanta\t\t\t60Rs(500ml)\n7.RedBull\t\t300Rs(250ml)");
+    printf("\n\nEnter Your Choice: ");
+    scanf("%d", &aa.choice);
+    printf("\n-------------------------------------------------\n");
+    bb.re = aa.choice;
+    aa.choice -= 1;
+    printf("\nDo you want to buy %s \n[Y/N]: \n", it.item2[aa.choice]);
+    scanf(" %c", &aa.ch);
+    if (aa.ch == 'Y' || aa.ch == 'y'){
+        int a=buy(stock, it.cost2,p);
+        return a;
+    }
+}
+int electronics(int *p){
+    int stock[] = {1000,900,300,500,100,800,700,180,900,400,1500,1200,130,200};
+    printf("\n-------------------------------------------------\n");
+    printf("in electronics we have\tprice");
+    printf("\n-------------------------------------------------\n");
+    printf("\n1.camera\n2.charger\n3.LED\n4.RAMS\n5.Mouses\n6.keyboard\n7.Headphones\n8.microphone\n9.routers\n10.HHD\n11.SSD\n12.graphicsCards\n13.MotherBoard");
+    printf("\n\nEnter Your Choice: ");
+    scanf("%d", &aa.choice);
+    printf("\n-------------------------------------------------\n");
+    cc.re = aa.choice;
+    aa.choice -= 1;
+    printf("\nDo you want to buy %s \n[Y/N]: \n", it.item3[aa.choice]);
+    scanf(" %c", &aa.ch);
+    if (aa.ch == 'Y' || aa.ch == 'y'){
+        int a=buy(stock, it.cost3,p);
+        return a;
+    }
+}
+int medicine(int *p){
+    int stock[] = {100,200,330,420,580,650,720};
+    printf("\n-------------------------------------------------\n");
+    printf("in medicine we have\tprice");
+    printf("\n-------------------------------------------------\n");
+    printf("\n1.sofitel\t\t140rs/strip\n2.norvasc\t\t500rs/box\n3.CaC1000\t\t600rs/pack\n4.disprin\t\t140rs/strip\n5.Panadol\t\t140/strip\n6.Aspirin\t\t140/strip\n7.Sofvasc\t\t120/strip");
+    printf("\n\nEnter Your Choice: ");
+    scanf("%d", &aa.choice);
+    printf("\n-------------------------------------------------\n");
+    dd.re = aa.choice;
+    aa.choice -= 1;
+    printf("\nDo you want to buy %s \n[Y/N]: \n", it.item4[aa.choice]);
+    scanf(" %c", &aa.ch);
+    if (aa.ch == 'Y' || aa.ch == 'y'){
+        int a=buy(stock, it.cost4,p);
+        return a;
+    }
+}
+int stationary(int *p){
+    int stock[] = {10000,5000,3500,5000,1000,2500,500,1000};
+    printf("\n-------------------------------------------------\n");
+    printf("in stationary we have\tprice");
+    printf("\n-------------------------------------------------\n");
+    printf("\n1.pencil\t\t5rs/piece\n2.sharpner\t\t10rs/piece\n3.eraser\t\t10rs/piece\n4.bollpen\t\t15rs/pen\n5.pointer\t\t20rs/piece\n6.register\t\t400rs/300pages\n7.school bags\t\t1500rs/bag\n8.Int\t\t\t200rs/bottle");
+    printf("\n\nEnter Your Choice: ");
+    scanf("%d", &aa.choice);
+    printf("\n-------------------------------------------------\n");
+    ee.re = aa.choice;
+    aa.choice -= 1;
+    printf("\nDo you want to buy %s \n[Y/N]: \n", it.item5[aa.choice]);
+    scanf(" %c", &aa.ch);
+    if (aa.ch == 'Y' || aa.ch == 'y'){
+        int a=buy(stock, it.cost5,p);
+        return a;
+    }
+}
+int Fruits(int *p){
+    int stock[] = {750,655,580,470,300,250,190};
+    printf("\n-------------------------------------------------\n");
+    printf("in Fruits we have\tprice");
+    printf("\n-------------------------------------------------\n");
+    printf("\n1.apple\t\t\t150rs/kilos\n2.banana\t\t100rs/dozens\n3.mango\t\t\t300rs/kgs\n4.pomegranate\t\t500rs/kg\n5.Guava\t\t\t200rs/kg\n6.Orange\t\t150rs/dozen\n7.Peaches\t\t200rs/kg");
+    printf("\n\nEnter Your Choice: ");
+    scanf("%d", &aa.choice);
+    printf("\n-------------------------------------------------\n");
+    ff.re = aa.choice;
+    aa.choice -= 1;
+    printf("\nDo you want to buy %s \n[Y/N]: \n", it.item6[aa.choice]);
+    scanf(" %c", &aa.ch);
+    if (aa.ch == 'Y' || aa.ch == 'y'){
+        int a=buy(stock, it.cost6,p);
+        return a;
+    }
+}
+main(){
+	int s,price;
+	int a,b,c,d,e,f;
+    printf("**WELCOME**\nA PROJECT BY\nName: SHAYAN AHMED\tID: 21650\nName: SHAHRYAR WASEEM\tID: 19939");
+    do{
+    	printf("\n=================================================\n");
+        printf("Available Stocks Are: \n");
+        printf("===================================================\n");
+        printf("\n1.grossary\n2.beverages\n3.electronics\n4.medicine\n5.stationary\n6.Fruits\n\n7.Recipt\n8.Exit");
+        printf("\n\nSelect: ");
+        scanf("%d", &s);   
+        switch (s){
+        case 1:
+            a=grossary(&price);
+            break;
+        case 2:
+            b=beverages(&price);
+            break;
+        case 3:
+            c=electronics(&price);
+            break;
+        case 4:
+            d=medicine(&price);
+            break;
+        case 5:
+            e=stationary(&price);
+            break;
+        case 6:
+            f=Fruits(&price);
+            break;
+        case 7:
+            recipt(a,b,c,d,e,f,&price);
+            break;
+        case 8:
+          	return 0;
+        }
+    } while (1);
+}
